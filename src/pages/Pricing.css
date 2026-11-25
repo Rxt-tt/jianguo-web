@@ -1,0 +1,84 @@
+.pricing-grid {
+  align-items: stretch;
+}
+
+.plan {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  height: 100%;
+}
+
+.plan--highlight {
+  border-color: rgba(191, 58, 47, 0.34);
+  box-shadow: var(--shadow-md);
+  background: linear-gradient(180deg, #fffdfb 0%, #fff8f3 100%);
+}
+
+.plan__badge {
+  align-self: flex-start;
+}
+
+.plan__head {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.plan__name {
+  font-size: var(--text-md);
+}
+
+.plan__tagline {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.plan__price {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.plan__amount {
+  font-size: clamp(2rem, 6vw, 2.5rem);
+  font-weight: var(--weight-bold);
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.plan__unit {
+  font-size: var(--text-sm);
+  color: var(--color-text-faint);
+}
+
+.plan__features {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.plan__features li {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.plan__features svg {
+  flex: none;
+  color: var(--color-success);
+}
+
+.plan > .btn {
+  margin-top: auto;
+}
+
+@media (max-width: 899px) {
+  .pricing-grid {
+    gap: var(--space-4);
+  }
+}
