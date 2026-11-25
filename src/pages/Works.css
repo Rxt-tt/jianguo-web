@@ -1,0 +1,329 @@
+/**
+ * 我的作品 /works
+ * 移动优先：375px 单列卡片流，640px 两列，900px 三列。
+ * 缩略图用纯 CSS 渐变占位，不引任何外链图片。
+ */
+
+.works__head {
+  max-width: var(--container-narrow);
+}
+
+/* ===== 筛选工具条 ===== */
+
+.works__toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  min-width: 0;
+}
+
+.works-tabs {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  max-width: 100%;
+  padding: 4px;
+  overflow-x: auto;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-xs);
+  scrollbar-width: none;
+}
+
+.works-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.works-tab {
+  flex: none;
+  padding: 7px 16px;
+  border-radius: var(--radius-pill);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  color: var(--color-text-muted);
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    background-color var(--transition-fast),
+    color var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.works-tab:hover {
+  background: var(--sand-100);
+  color: var(--color-text);
+}
+
+.works-tab.is-active {
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+  box-shadow: var(--shadow-primary);
+}
+
+.works-tab:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--color-focus);
+}
+
+.works__count {
+  flex: none;
+}
+
+.works__count strong {
+  color: var(--color-text);
+  font-weight: var(--weight-semibold);
+}
+
+.works__filter-note {
+  margin-top: calc(var(--space-2) * -1);
+}
+
+/* ===== 区块标题 ===== */
+
+.works__section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  min-width: 0;
+}
+
+.works__section-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.works__empty-note {
+  text-align: center;
+}
+
+/* ===== 作品网格 ===== */
+
+.works-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-4);
+}
+
+.works-grid__item {
+  display: flex;
+  min-width: 0;
+}
+
+.works-card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-width: 0;
+  overflow: hidden;
+  border-color: var(--sand-200);
+}
+
+/* ===== 缩略图：CSS 渐变占位 ===== */
+
+.works-thumb {
+  position: relative;
+  display: block;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-bottom: 1px solid var(--sand-200);
+}
+
+/* 底部风土剪影，让占位图不像纯色块 */
+.works-thumb::after {
+  content: '';
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  height: 38%;
+  background: var(--thumb-silhouette, rgba(123, 88, 54, 0.16));
+  clip-path: polygon(0 52%, 18% 32%, 34% 46%, 52% 22%, 70% 44%, 86% 30%, 100% 44%, 100% 100%, 0 100%);
+}
+
+.works-thumb__scene {
+  position: absolute;
+  bottom: var(--space-3);
+  left: var(--space-3);
+  z-index: 1;
+  padding: 2px 9px;
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.88);
+  color: var(--ink-700);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+}
+
+.works-card__type-badge {
+  position: absolute;
+  top: var(--space-3);
+  right: var(--space-3);
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: var(--shadow-xs);
+}
+
+/* 6 张示例作品各自的占位配色（全部取自风土色系） */
+.works-thumb--1 {
+  background:
+    radial-gradient(120% 90% at 78% 6%, rgba(191, 58, 47, 0.22), transparent 62%),
+    linear-gradient(158deg, #fdf3e2 0%, #ecd3ae 52%, #c9a172 100%);
+  --thumb-silhouette: rgba(125, 32, 26, 0.14);
+}
+
+.works-thumb--2 {
+  background:
+    radial-gradient(110% 80% at 20% 10%, rgba(108, 75, 144, 0.2), transparent 60%),
+    linear-gradient(200deg, #f5edf9 0%, #dfd0ee 48%, #a98cc4 100%);
+  --thumb-silhouette: rgba(85, 56, 114, 0.16);
+}
+
+.works-thumb--3 {
+  background:
+    radial-gradient(120% 90% at 72% 12%, rgba(47, 122, 87, 0.2), transparent 62%),
+    linear-gradient(165deg, #eff7ee 0%, #d4e7d2 50%, #9dbf9a 100%);
+  --thumb-silhouette: rgba(37, 99, 71, 0.16);
+}
+
+.works-thumb--4 {
+  background:
+    radial-gradient(110% 80% at 24% 8%, rgba(123, 88, 54, 0.24), transparent 62%),
+    linear-gradient(148deg, #f8f1e6 0%, #e2cdb1 50%, #b8946a 100%);
+  --thumb-silhouette: rgba(99, 69, 42, 0.2);
+}
+
+.works-thumb--5 {
+  background:
+    radial-gradient(115% 85% at 82% 8%, rgba(222, 199, 164, 0.7), transparent 60%),
+    linear-gradient(192deg, #fdf8f0 0%, #f1e0c6 48%, #cfae82 100%);
+  --thumb-silhouette: rgba(123, 88, 54, 0.18);
+}
+
+.works-thumb--6 {
+  background:
+    radial-gradient(120% 90% at 30% 10%, rgba(191, 58, 47, 0.18), transparent 60%),
+    radial-gradient(90% 70% at 90% 90%, rgba(108, 75, 144, 0.18), transparent 66%),
+    linear-gradient(175deg, #fbf1e7 0%, #eddcc8 50%, #c2a687 100%);
+  --thumb-silhouette: rgba(70, 48, 24, 0.16);
+}
+
+/* 视频类缩略图的播放标记 */
+.works-thumb__play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+  width: 44px;
+  height: 44px;
+  margin: -22px 0 0 -22px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.86);
+  box-shadow: var(--shadow-sm);
+}
+
+.works-thumb__play::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  margin: -7px 0 0 -3px;
+  border-top: 7px solid transparent;
+  border-bottom: 7px solid transparent;
+  border-left: 11px solid var(--color-primary);
+}
+
+/* ===== 卡片正文 ===== */
+
+.works-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-4);
+  min-width: 0;
+}
+
+.works-card__title {
+  font-size: var(--text-md);
+  font-weight: var(--weight-semibold);
+  line-height: var(--leading-snug);
+  color: var(--color-text);
+  overflow-wrap: anywhere;
+}
+
+.works-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+
+.works-card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-1);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--color-border);
+}
+
+.works-card__actions .btn {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+/* ===== 底部引导条 ===== */
+
+.works__cta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-5);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--sand-200);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.7), rgba(246, 237, 223, 0.7));
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.works__cta svg {
+  flex: none;
+  color: var(--color-primary);
+}
+
+.works__cta p {
+  flex: 1 1 220px;
+  min-width: 0;
+}
+
+.works__cta strong {
+  color: var(--color-text);
+}
+
+/* ===== 断点 ===== */
+
+@media (min-width: 640px) {
+  .works-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .works-card__actions .btn {
+    flex: 0 1 auto;
+  }
+}
+
+@media (min-width: 900px) {
+  .works-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-6);
+  }
+
+  .works__section {
+    gap: var(--space-5);
+  }
+}
