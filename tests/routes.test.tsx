@@ -18,11 +18,11 @@ interface RouteCase {
 }
 
 const cases: RouteCase[] = [
-  { path: '/', heading: /装进你的商品图/, body: /三步做出能卖货的物料/ },
-  { path: '/upload', heading: /上传商品图/, body: /把商品照片放到这里/ },
-  { path: '/scene', heading: /选择风土场景/, body: /场景库还没有接入/ },
-  { path: '/result', heading: /生成结果/, body: /还没有生成结果/ },
-  { path: '/pricing', heading: /按你的出货节奏付费/, body: /创作月卡/ },
+  { path: '/', heading: /农特产营销物料/, body: /从照片到营销物料/ },
+  { path: '/upload', heading: /上传商品图/, body: /拍摄技巧/ },
+  { path: '/scene', heading: /选择风土场景/, body: /高端国潮礼盒/ },
+  { path: '/result', heading: /生成结果/, body: /AI 合成标识/ },
+  { path: '/pricing', heading: /花在好产品上/, body: /积分简单算/ },
   { path: '/login', heading: /欢迎回来/, body: /AI 生成内容标识说明/ },
   { path: '/works', heading: /我的作品/, body: /还没有作品，去生成第一套/ },
 ];
