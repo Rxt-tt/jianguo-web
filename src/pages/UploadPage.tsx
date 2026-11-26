@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   ArrowRightIcon,
@@ -9,6 +10,20 @@ import {
 } from '../components';
 import { FLOW_STEPS, FLOW_STEP_INDEX } from '../app/flow';
 import './Upload.css';
+
+type VoiceLangId = 'zh' | 'ug' | 'kk';
+
+interface VoiceLangOption {
+  id: VoiceLangId;
+  label: string;
+  sub: string;
+}
+
+const VOICE_LANG_OPTIONS: readonly VoiceLangOption[] = [
+  { id: 'zh', label: '汉语', sub: '普通话 / 疆普' },
+  { id: 'ug', label: '维吾尔语', sub: '母语口述' },
+  { id: 'kk', label: '哈萨克语', sub: '母语口述' },
+];
 
 interface PhotoTip {
   id: string;
@@ -59,6 +74,26 @@ function CameraSvg() {
     >
       <path d="M4 8.5a2 2 0 0 1 2-2h2.2l1.4-2h4.8l1.4 2H18a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-9Z" />
       <circle cx="12" cy="13" r="3.4" />
+    </svg>
+  );
+}
+
+function MicSvg() {
+  return (
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.85"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <rect x="9" y="3.2" width="6" height="11.2" rx="3" />
+      <path d="M5.5 11.4a6.5 6.5 0 0 0 13 0" />
+      <path d="M12 17.9v3M8.8 20.9h6.4" />
     </svg>
   );
 }
@@ -249,6 +284,9 @@ function WalnutBagSample() {
 
 export function UploadPage() {
   const navigate = useNavigate();
+  const [voiceLang, setVoiceLang] = useState<VoiceLangId>('zh');
+  const activeVoiceLang =
+    VOICE_LANG_OPTIONS.find((item) => item.id === voiceLang) ?? VOICE_LANG_OPTIONS[0];
 
   return (
     <div className="page upload-page">
@@ -312,6 +350,72 @@ export function UploadPage() {
             <p className="upload-sample-card__desc">
               商品占画面约 60%，浅色纯背景与柔和侧光，能显著提升 AI 融合后的真实质感。
             </p>
+          </div>
+        </Card>
+      </section>
+
+      <section className="upload-voice-section" aria-labelledby="upload-voice-title">
+        <Card variant="elevated" padding="lg" className="upload-voice-card">
+          <div className="upload-voice">
+            <div className="upload-voice__info">
+              <div className="upload-voice__head">
+                <span className="badge badge--accent">母语口述 · 可选</span>
+                <span className="upload-voice__lang-badge">
+                  当前语种：{activeVoiceLang.label}
+                </span>
+              </div>
+
+              <h2 id="upload-voice-title" className="section-title">
+                语音口述卖点（可选）
+              </h2>
+              <p className="upload-voice__desc">
+                普通话不流利也没关系，用母语说卖点，系统会转写成带货文案。
+              </p>
+
+              <div className="upload-voice__langs" role="radiogroup" aria-label="口述语种选择">
+                {VOICE_LANG_OPTIONS.map((lang) => {
+                  const isSelected = voiceLang === lang.id;
+                  return (
+                    <button
+                      key={lang.id}
+                      type="button"
+                      role="radio"
+                      aria-checked={isSelected}
+                      className={`voice-lang-pill${isSelected ? ' is-selected' : ''}`}
+                      onClick={() => setVoiceLang(lang.id)}
+                    >
+                      <span className="voice-lang-pill__dot" aria-hidden="true" />
+                      <span className="voice-lang-pill__text">
+                        <span className="voice-lang-pill__label">{lang.label}</span>
+                        <span className="voice-lang-pill__sub">{lang.sub}</span>
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
+            <div className="upload-voice__stage">
+              <div className="upload-voice__wave" aria-hidden="true">
+                <span />
+                <span />
+                <span />
+                <span />
+                <span />
+              </div>
+
+              <Button
+                size="lg"
+                variant="primary"
+                disabled
+                icon={<MicSvg />}
+                className="upload-voice__hold-btn"
+              >
+                按住说话
+              </Button>
+
+              <p className="upload-voice__hint">语音输入功能待接入</p>
+            </div>
           </div>
         </Card>
       </section>

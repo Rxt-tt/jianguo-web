@@ -39,6 +39,27 @@ const bottomNavItems: BottomNavItem[] = [
 const navLinkClass = (base: string) => ({ isActive }: { isActive: boolean }) =>
   isActive ? `${base} is-active` : base;
 
+function CreditsSvg() {
+  return (
+    <svg
+      className="topbar__credits-icon"
+      width="15"
+      height="15"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.9"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <circle cx="12" cy="12" r="8.5" />
+      <path d="M12 7.8v8.4M9.5 10.2c0-1.1 1.1-1.8 2.5-1.8s2.5.7 2.5 1.7c0 2-5 1.4-5 3.6 0 1 1.1 1.8 2.5 1.8s2.5-.7 2.5-1.8" />
+    </svg>
+  );
+}
+
 export function Layout() {
   const year = new Date().getFullYear();
 
@@ -66,6 +87,14 @@ export function Layout() {
           </nav>
 
           <div className="topbar__actions">
+            <NavLink
+              to="/pricing"
+              className={navLinkClass('topbar__credits')}
+              title="查看定价与积分套餐"
+            >
+              <CreditsSvg />
+              <span>积分 20</span>
+            </NavLink>
             <NavLink to="/login" className={navLinkClass('topbar__login')}>
               登录
             </NavLink>

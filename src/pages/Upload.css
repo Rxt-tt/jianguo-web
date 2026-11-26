@@ -208,6 +208,195 @@
   line-height: var(--leading-snug);
 }
 
+/* ===== 语音口述卖点（可选） ===== */
+
+.upload-voice-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.upload-voice-card {
+  border: 1px solid var(--color-border);
+}
+
+.upload-voice {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-5);
+  align-items: center;
+}
+
+.upload-voice__info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  min-width: 0;
+}
+
+.upload-voice__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.upload-voice__lang-badge {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+}
+
+.upload-voice__desc {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: var(--leading-normal);
+  max-width: 52ch;
+}
+
+.upload-voice__langs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-2);
+  margin-top: var(--space-1);
+}
+
+.voice-lang-pill {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 10px 6px;
+  border-radius: var(--radius-md);
+  border: 1.5px solid var(--color-border);
+  background: var(--sand-50);
+  text-align: center;
+  cursor: pointer;
+  min-width: 0;
+  transition:
+    border-color var(--transition-fast),
+    background-color var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.voice-lang-pill:hover {
+  border-color: var(--sand-300);
+  background: var(--white);
+}
+
+.voice-lang-pill.is-selected {
+  border-color: var(--color-primary);
+  background: var(--color-primary-soft);
+  box-shadow: 0 0 0 2px rgba(191, 58, 47, 0.12);
+}
+
+.voice-lang-pill__dot {
+  flex: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2px solid var(--sand-300);
+  background: var(--white);
+  position: relative;
+}
+
+.voice-lang-pill.is-selected .voice-lang-pill__dot {
+  border-color: var(--color-primary);
+}
+
+.voice-lang-pill.is-selected .voice-lang-pill__dot::after {
+  content: '';
+  position: absolute;
+  inset: 2px;
+  border-radius: 50%;
+  background: var(--color-primary);
+}
+
+.voice-lang-pill__text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.voice-lang-pill__label {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  color: var(--color-text);
+  line-height: 1.25;
+  white-space: nowrap;
+}
+
+.voice-lang-pill.is-selected .voice-lang-pill__label {
+  color: var(--color-primary);
+}
+
+.voice-lang-pill__sub {
+  font-size: 11px;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.upload-voice__stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  padding: var(--space-5) var(--space-4);
+  border-radius: var(--radius-lg);
+  border: 1.5px dashed var(--sand-300);
+  background:
+    radial-gradient(240px 140px at 50% 0%, rgba(243, 237, 249, 0.72), transparent 72%),
+    var(--sand-50);
+  text-align: center;
+}
+
+.upload-voice__wave {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  height: 22px;
+}
+
+.upload-voice__wave span {
+  display: block;
+  width: 4px;
+  border-radius: var(--radius-pill);
+  background: var(--pomegranate-100);
+}
+
+.upload-voice__wave span:nth-child(1),
+.upload-voice__wave span:nth-child(5) {
+  height: 8px;
+}
+
+.upload-voice__wave span:nth-child(2),
+.upload-voice__wave span:nth-child(4) {
+  height: 15px;
+  background: rgba(191, 58, 47, 0.45);
+}
+
+.upload-voice__wave span:nth-child(3) {
+  height: 22px;
+  background: var(--color-primary);
+  opacity: 0.65;
+}
+
+.upload-voice__hold-btn {
+  width: 100%;
+  max-width: 240px;
+  min-height: 54px;
+  font-size: var(--text-md);
+}
+
+.upload-voice__hint {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  font-weight: var(--weight-medium);
+}
+
 /* ===== 拍摄技巧 4 项 ===== */
 
 .upload-tips-section {
@@ -309,6 +498,14 @@
     min-height: 340px;
   }
 
+  .voice-lang-pill {
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: var(--space-2);
+    padding: 10px 12px;
+    text-align: left;
+  }
+
   .upload-tips-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -321,6 +518,11 @@
 @media (min-width: 900px) {
   .upload-workspace {
     grid-template-columns: minmax(0, 1.38fr) minmax(0, 0.92fr);
+    gap: var(--space-6);
+  }
+
+  .upload-voice {
+    grid-template-columns: minmax(0, 1.35fr) minmax(240px, 0.9fr);
     gap: var(--space-6);
   }
 

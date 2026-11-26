@@ -301,6 +301,131 @@
   line-height: var(--leading-snug);
 }
 
+/* ===== 视频配音语种多选 ===== */
+
+.dubbing-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-3);
+}
+
+.dubbing-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  width: 100%;
+  padding: var(--space-4);
+  border-radius: var(--radius-lg);
+  border: 1.5px solid var(--color-border);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-xs);
+  text-align: left;
+  cursor: pointer;
+  transition:
+    transform var(--transition-fast),
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast),
+    background-color var(--transition-fast);
+}
+
+.dubbing-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--sand-300);
+  box-shadow: var(--shadow-sm);
+}
+
+.dubbing-card.is-selected {
+  border-color: var(--color-success);
+  background: linear-gradient(180deg, #ffffff 0%, var(--color-success-soft) 100%);
+  box-shadow:
+    0 0 0 3px var(--color-success-soft),
+    var(--shadow-sm);
+}
+
+.dubbing-card__top {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.dubbing-card__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-sm);
+  background: var(--sand-100);
+  color: var(--walnut-600);
+  transition:
+    background-color var(--transition-fast),
+    color var(--transition-fast);
+}
+
+.dubbing-card.is-selected .dubbing-card__icon {
+  background: var(--color-success);
+  color: var(--white);
+}
+
+.dubbing-card__badge {
+  padding: 2px 9px;
+  border-radius: var(--radius-pill);
+  background: var(--sand-100);
+  color: var(--ink-700);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semibold);
+}
+
+.dubbing-card.is-selected .dubbing-card__badge {
+  background: var(--white);
+  color: var(--color-success);
+}
+
+.dubbing-card__checkbox {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: var(--radius-xs);
+  border: 1.5px solid var(--sand-300);
+  background: var(--white);
+  color: var(--white);
+  transition:
+    background-color var(--transition-fast),
+    border-color var(--transition-fast);
+}
+
+.dubbing-card__checkbox.is-selected {
+  border-color: var(--color-success);
+  background: var(--color-success);
+}
+
+.dubbing-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.dubbing-card__title {
+  font-size: var(--text-md);
+  font-weight: var(--weight-semibold);
+  color: var(--color-text);
+}
+
+.dubbing-card__channels {
+  font-size: var(--text-xs);
+  font-weight: var(--weight-medium);
+  color: var(--walnut-500);
+}
+
+.dubbing-card__desc {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: var(--leading-snug);
+}
+
 /* ===== 底部确认汇总栏 ===== */
 
 .scene-summary {
@@ -339,6 +464,11 @@
   color: var(--color-text-faint);
 }
 
+.scene-summary__langs {
+  color: var(--oasis-600);
+  font-weight: var(--weight-medium);
+}
+
 .scene-summary__actions {
   align-items: center;
 }
@@ -349,7 +479,8 @@
     gap: var(--space-5);
   }
 
-  .material-grid {
+  .material-grid,
+  .dubbing-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: var(--space-4);
   }

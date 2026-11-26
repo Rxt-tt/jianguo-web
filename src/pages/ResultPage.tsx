@@ -24,6 +24,46 @@ interface ResultAsset {
   subline: string;
 }
 
+interface DubbingTrack {
+  id: 'zh' | 'ug' | 'kk';
+  language: string;
+  subtitleLabel: string;
+  duration: string;
+  channel: string;
+  preview: string;
+  bars: readonly number[];
+}
+
+const DUBBING_TRACKS: readonly DubbingTrack[] = [
+  {
+    id: 'zh',
+    language: '汉语',
+    subtitleLabel: '字幕：中文',
+    duration: '00:15',
+    channel: '淘宝 / 抖音公域',
+    preview: '「新疆阿克苏纸皮核桃，薄壳手捏即开，原产地直发…」',
+    bars: [36, 68, 50, 86, 60, 92, 48, 76, 56, 82, 42, 64],
+  },
+  {
+    id: 'ug',
+    language: '维吾尔语',
+    subtitleLabel: '字幕：维文',
+    duration: '00:16',
+    channel: '疆内朋友圈 / 同乡私域',
+    preview: '已按汉语审校脚本转译为维吾尔语口播与维文字幕占位',
+    bars: [44, 62, 80, 52, 88, 66, 72, 46, 84, 58, 70, 40],
+  },
+  {
+    id: 'kk',
+    language: '哈萨克语',
+    subtitleLabel: '字幕：哈文',
+    duration: '00:16',
+    channel: '同乡社群 / 疆内私域',
+    preview: '已按汉语审校脚本转译为哈萨克语口播与哈文字幕占位',
+    bars: [38, 74, 54, 84, 48, 90, 62, 78, 50, 68, 44, 58],
+  },
+];
+
 const RESULT_ASSETS: readonly ResultAsset[] = [
   {
     id: 'main',
@@ -150,6 +190,20 @@ function ShieldCheckSvg() {
   );
 }
 
+function PlaySvg() {
+  return (
+    <svg
+      width="15"
+      height="15"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      aria-hidden="true"
+    >
+      <path d="m8 5.6 10.6 6.4L8 18.4V5.6Z" />
+    </svg>
+  );
+}
+
 function AssetMockup({ asset }: { asset: ResultAsset }) {
   return (
     <div className={`asset-stage asset-stage--${asset.id}`}>
@@ -225,7 +279,7 @@ export function ResultPage() {
         </div>
       </div>
 
-      {/* 轻提示条：AI 标识 + 违规词过滤 */}
+      {/* 轻提示条：AI 标识 + 违规词过滤 + 汉语先审再译 */}
       <aside className="result-notice" aria-label="生成内容合规提示">
         <span className="result-notice__icon">
           <ShieldCheckSvg />
@@ -233,7 +287,7 @@ export function ResultPage() {
         <div className="result-notice__body">
           <p className="result-notice__text">
             <strong>合规提示：</strong>
-            生成内容含 AI 标识，画面与文案中的违规词已过滤。
+            生成内容含 AI 标识，画面与文案中的违规词已过滤。脚本执行「汉语先审、再译合成」，违禁词在汉语阶段拦截。
           </p>
           <span className="result-notice__tags">
             <span>
@@ -241,6 +295,9 @@ export function ResultPage() {
             </span>
             <span>
               <CheckIcon size={12} /> 广告法违规词已过滤
+            </span>
+            <span>
+              <CheckIcon size={12} /> 汉语先审再译
             </span>
           </span>
         </div>
@@ -280,6 +337,66 @@ export function ResultPage() {
                   </Button>
                 </div>
               </div>
+            </Card>
+          ))}
+        </div>
+      </section>
+
+      {/* 三语配音试听 */}
+      <section className="result-dubbing" aria-labelledby="result-dubbing-title">
+        <div className="result-dubbing__head">
+          <div>
+            <h2 id="result-dubbing-title" className="section-title">
+              三语配音试听
+            </h2>
+            <p className="small muted">
+              同一套带货脚本同步生成汉 / 维 / 哈三语配音与对应字幕，试听播放待接入
+            </p>
+          </div>
+          <span className="badge badge--accent">3 条音轨 · 待接入</span>
+        </div>
+
+        <div className="result-dubbing__grid">
+          {DUBBING_TRACKS.map((track) => (
+            <Card
+              key={track.id}
+              variant="elevated"
+              padding="md"
+              className="dubbing-track"
+            >
+              <div className="dubbing-track__head">
+                <div className="dubbing-track__title-wrap">
+                  <h3 className="dubbing-track__lang">{track.language}</h3>
+                  <span className="dubbing-track__subtitle">{track.subtitleLabel}</span>
+                </div>
+                <span className="dubbing-track__pending">待接入</span>
+              </div>
+
+              <div className="dubbing-track__player">
+                <button
+                  type="button"
+                  disabled
+                  className="dubbing-track__play"
+                  aria-label={`试听${track.language}配音（待接入）`}
+                >
+                  <PlaySvg />
+                </button>
+
+                <div className="dubbing-track__wave" aria-hidden="true">
+                  {track.bars.map((height, idx) => (
+                    <span
+                      key={idx}
+                      className="dubbing-track__bar"
+                      style={{ height: `${height}%` }}
+                    />
+                  ))}
+                </div>
+
+                <span className="dubbing-track__duration">00:00 / {track.duration}</span>
+              </div>
+
+              <p className="dubbing-track__preview">{track.preview}</p>
+              <span className="dubbing-track__channel">适用渠道：{track.channel}</span>
             </Card>
           ))}
         </div>

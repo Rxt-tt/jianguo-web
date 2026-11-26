@@ -13,6 +13,7 @@ import './Scene.css';
 
 type SceneId = 'origin' | 'guochao' | 'midnight' | 'orchard';
 type MaterialId = 'main-image' | 'social-post' | 'short-video';
+type DubbingLangId = 'zh' | 'ug' | 'kk';
 
 interface SceneOption {
   id: SceneId;
@@ -27,6 +28,14 @@ interface MaterialOption {
   name: string;
   ratio: string;
   resolution: string;
+  channels: string;
+  desc: string;
+}
+
+interface DubbingLangOption {
+  id: DubbingLangId;
+  name: string;
+  badge: string;
   channels: string;
   desc: string;
 }
@@ -86,6 +95,30 @@ const MATERIAL_OPTIONS: readonly MaterialOption[] = [
     resolution: '1080 × 1920 px',
     channels: '抖音 / 视频号 / 快手',
     desc: '竖屏动态光影与卖点字幕卡点，快速产出 15 秒带货短片。',
+  },
+];
+
+const DUBBING_LANG_OPTIONS: readonly DubbingLangOption[] = [
+  {
+    id: 'zh',
+    name: '汉语',
+    badge: '公域主渠道',
+    channels: '淘宝 / 抖音 / 拼多多',
+    desc: '发淘宝、抖音等全国公域电商与短视频渠道，标准普通话配音搭配中文字幕。',
+  },
+  {
+    id: 'ug',
+    name: '维吾尔语',
+    badge: '疆内私域',
+    channels: '疆内朋友圈 / 同乡社群',
+    desc: '发疆内朋友圈与同乡私域转化，地道维吾尔语口播搭配维文字幕，拉近信任感。',
+  },
+  {
+    id: 'kk',
+    name: '哈萨克语',
+    badge: '同乡私域',
+    channels: '疆内朋友圈 / 同乡群',
+    desc: '发疆内朋友圈与同乡私域传播，亲切自然的哈萨克语配音搭配哈文字幕。',
   },
 ];
 
@@ -240,6 +273,24 @@ function MaterialIcon({ id }: { id: MaterialId }) {
   );
 }
 
+function DubbingWaveSvg() {
+  return (
+    <svg
+      width="19"
+      height="19"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M4.5 10.2v3.6M8.2 7.2v9.6M12 4.5v15M15.8 7.8v8.4M19.5 10.2v3.6" />
+    </svg>
+  );
+}
+
 export function ScenePage() {
   const navigate = useNavigate();
   const [selectedScene, setSelectedScene] = useState<SceneId>('origin');
@@ -247,9 +298,16 @@ export function ScenePage() {
     'main-image',
     'social-post',
   ]);
+  const [selectedLanguages, setSelectedLanguages] = useState<DubbingLangId[]>(['zh']);
 
   const toggleMaterial = (id: MaterialId) => {
     setSelectedMaterials((prev) =>
+      prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id],
+    );
+  };
+
+  const toggleLanguage = (id: DubbingLangId) => {
+    setSelectedLanguages((prev) =>
       prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id],
     );
   };
@@ -372,6 +430,55 @@ export function ScenePage() {
         </div>
       </section>
 
+      {/* 视频配音语种多选 */}
+      <section className="scene-section" aria-labelledby="dubbing-lang-title">
+        <div className="scene-section__head">
+          <div>
+            <h2 id="dubbing-lang-title" className="section-title">
+              视频配音语种（可多选）
+            </h2>
+            <p className="small muted">一套带货脚本可同步输出多语种配音与对应字幕（纯视觉选中态）</p>
+          </div>
+          <span className="badge badge--success">
+            已选 {selectedLanguages.length} / {DUBBING_LANG_OPTIONS.length} 种语种
+          </span>
+        </div>
+
+        <div className="dubbing-grid" role="group" aria-label="视频配音语种多选">
+          {DUBBING_LANG_OPTIONS.map((lang) => {
+            const isChecked = selectedLanguages.includes(lang.id);
+            return (
+              <button
+                key={lang.id}
+                type="button"
+                aria-pressed={isChecked}
+                className={`dubbing-card${isChecked ? ' is-selected' : ''}`}
+                onClick={() => toggleLanguage(lang.id)}
+              >
+                <div className="dubbing-card__top">
+                  <span className="dubbing-card__icon">
+                    <DubbingWaveSvg />
+                  </span>
+                  <span className="dubbing-card__badge">{lang.badge}</span>
+                  <span
+                    className={`dubbing-card__checkbox${isChecked ? ' is-selected' : ''}`}
+                    aria-hidden="true"
+                  >
+                    {isChecked && <CheckIcon size={13} />}
+                  </span>
+                </div>
+
+                <div className="dubbing-card__body">
+                  <h3 className="dubbing-card__title">{lang.name}</h3>
+                  <p className="dubbing-card__channels">{lang.channels}</p>
+                  <p className="dubbing-card__desc">{lang.desc}</p>
+                </div>
+              </button>
+            );
+          })}
+        </div>
+      </section>
+
       {/* 底部确认与操作栏 */}
       <Card variant="soft" padding="md" className="scene-summary">
         <div className="scene-summary__info">
@@ -385,6 +492,15 @@ export function ScenePage() {
                     .map((m) => m.name)
                     .join(' / ')
                 : '暂未勾选物料（预览模式仍可进入结果页）'}
+            </span>
+            <span className="scene-summary__dot" aria-hidden="true">·</span>
+            <span className="scene-summary__langs">
+              配音：
+              {selectedLanguages.length > 0
+                ? DUBBING_LANG_OPTIONS.filter((l) => selectedLanguages.includes(l.id))
+                    .map((l) => l.name)
+                    .join(' / ')
+                : '暂未勾选语种'}
             </span>
           </p>
         </div>
