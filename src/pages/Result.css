@@ -51,6 +51,7 @@
 .result-notice__text {
   font-size: var(--text-sm);
   line-height: var(--leading-snug);
+  max-width: var(--prose-max);
 }
 
 .result-notice__text strong {
@@ -318,6 +319,7 @@
   font-size: var(--text-sm);
   color: var(--color-text-muted);
   line-height: var(--leading-snug);
+  max-width: 56ch;
 }
 
 .result-card__actions {
@@ -463,6 +465,7 @@
   font-size: var(--text-sm);
   color: var(--color-text-muted);
   line-height: var(--leading-snug);
+  max-width: 56ch;
 }
 
 .dubbing-track__channel {
@@ -479,6 +482,10 @@
   flex-direction: column;
   gap: var(--space-3);
   padding-top: var(--space-2);
+}
+
+.result-footer > p {
+  max-width: var(--prose-max);
 }
 
 .result-footer__actions {
@@ -529,5 +536,42 @@
 
   .asset-stage {
     min-height: 292px;
+  }
+}
+
+@media (min-width: 1400px) {
+  .result-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--space-5);
+  }
+
+  .result-card__body {
+    padding: var(--space-4);
+  }
+
+  .result-card__actions .btn {
+    font-size: var(--text-xs);
+  }
+
+  .result-dubbing__grid {
+    gap: var(--space-6);
+  }
+}
+
+@media (min-width: 1800px) {
+  .result-grid {
+    gap: var(--space-6);
+  }
+
+  .result-card__body {
+    padding: var(--space-5);
+  }
+
+  .result-card__actions .btn {
+    font-size: var(--text-sm);
+  }
+
+  .asset-stage {
+    min-height: 320px;
   }
 }

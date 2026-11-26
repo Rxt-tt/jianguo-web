@@ -70,7 +70,7 @@
 }
 
 .upload-drop__desc {
-  max-width: 38ch;
+  max-width: 52ch;
   font-size: var(--text-sm);
   color: var(--color-text-muted);
 }
@@ -85,7 +85,7 @@
 }
 
 .upload-drop__hint {
-  max-width: 40ch;
+  max-width: 56ch;
   font-size: var(--text-xs);
   color: var(--color-text-faint);
 }
@@ -206,6 +206,7 @@
   font-size: var(--text-sm);
   color: var(--color-text-muted);
   line-height: var(--leading-snug);
+  max-width: 60ch;
 }
 
 /* ===== 语音口述卖点（可选） ===== */
@@ -249,7 +250,7 @@
   font-size: var(--text-sm);
   color: var(--color-text-muted);
   line-height: var(--leading-normal);
-  max-width: 52ch;
+  max-width: 65ch;
 }
 
 .upload-voice__langs {
@@ -477,6 +478,7 @@
   font-size: var(--text-xs);
   color: var(--color-text-muted);
   line-height: var(--leading-normal);
+  max-width: 48ch;
 }
 
 /* ===== 底部操作区 ===== */
@@ -486,6 +488,10 @@
   flex-direction: column;
   gap: var(--space-3);
   padding-top: var(--space-2);
+}
+
+.upload-footer > p {
+  max-width: var(--prose-max);
 }
 
 .upload-footer__actions {
@@ -534,5 +540,34 @@
   .upload-tip-card {
     flex-direction: column;
     gap: var(--space-3);
+  }
+}
+
+@media (min-width: 1440px) {
+  .upload-workspace {
+    grid-template-columns: minmax(0, 1.45fr) minmax(0, 0.95fr);
+    gap: var(--space-8);
+  }
+
+  .upload-drop {
+    min-height: clamp(340px, 22vw, 440px);
+  }
+
+  .walnut-sample {
+    aspect-ratio: 16 / 10;
+    max-height: 360px;
+  }
+
+  .walnut-sample__svg {
+    max-width: 260px;
+  }
+
+  .upload-voice {
+    grid-template-columns: minmax(0, 1.4fr) minmax(280px, 0.9fr);
+    gap: var(--space-8);
+  }
+
+  .upload-tips-grid {
+    gap: var(--space-5);
   }
 }

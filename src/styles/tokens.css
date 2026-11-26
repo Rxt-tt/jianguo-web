@@ -121,8 +121,10 @@
   --shadow-primary: 0 8px 22px rgba(191, 58, 47, 0.22);
 
   /* ===== 布局 ===== */
-  --container-max: 1120px;
+  --container-max: 100%;
   --container-narrow: 760px;
+  --container-padding: clamp(16px, 4vw, 72px);
+  --prose-max: 72ch;
   --topbar-height: 56px;
   --bottomnav-height: 60px;
   --safe-top: env(safe-area-inset-top, 0px);

@@ -5,7 +5,7 @@
  */
 
 .works__head {
-  max-width: var(--container-narrow);
+  max-width: none;
 }
 
 /* ===== 筛选工具条 ===== */
@@ -79,6 +79,7 @@
 
 .works__filter-note {
   margin-top: calc(var(--space-2) * -1);
+  max-width: var(--prose-max);
 }
 
 /* ===== 区块标题 ===== */
@@ -99,6 +100,8 @@
 
 .works__empty-note {
   text-align: center;
+  max-width: var(--prose-max);
+  margin-inline: auto;
 }
 
 /* ===== 作品网格 ===== */
@@ -299,6 +302,8 @@
 .works__cta p {
   flex: 1 1 220px;
   min-width: 0;
+  max-width: var(--prose-max);
+  margin-right: auto;
 }
 
 .works__cta strong {
@@ -325,5 +330,11 @@
 
   .works__section {
     gap: var(--space-5);
+  }
+}
+
+@media (min-width: 1600px) {
+  .works-grid {
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
   }
 }

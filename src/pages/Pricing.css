@@ -2,7 +2,7 @@
 .pricing-heading { text-align: center; display: flex; flex-direction: column; align-items: center; gap: var(--space-4); padding: var(--space-4) 0; }
 .pricing-heading h1 { font-size: var(--text-hero); font-weight: var(--weight-bold); line-height: 1.35; letter-spacing: -.035em; }
 .pricing-heading h1 span { color: var(--pomegranate-500); }
-.pricing-heading > p { color: var(--ink-500); max-width: 40ch; }
+.pricing-heading > p { color: var(--ink-500); max-width: min(56ch, 100%); }
 .pricing-heading__pill { font-size: var(--text-xs); padding: var(--space-2) var(--space-4); border-radius: var(--radius-pill); background: var(--sand-100); color: var(--walnut-600); }
 .pricing-plans { display: grid; gap: var(--space-4); }
 .pricing-plan { display: flex; flex-direction: column; min-width: 0; position: relative; overflow: hidden; }
@@ -26,12 +26,12 @@
 .pricing-credit-note { display: flex; gap: var(--space-4); padding: var(--space-5); background: var(--sand-100); border: 1px solid var(--sand-200); border-radius: var(--radius-lg); }
 .pricing-credit-note__icon { color: var(--walnut-500); flex: none; padding-top: var(--space-1); }
 .pricing-credit-note h2 { font-size: var(--text-md); margin-bottom: var(--space-2); }
-.pricing-credit-note p { font-size: var(--text-sm); color: var(--ink-500); }
+.pricing-credit-note p { font-size: var(--text-sm); color: var(--ink-500); max-width: var(--prose-max); }
 .pricing-credit-note p + p { margin-top: var(--space-2); font-size: var(--text-xs); }
 .pricing-credit-note strong { color: var(--walnut-600); }
 .pricing-comparison { display: flex; flex-direction: column; gap: var(--space-5); }
 .pricing-comparison__head h2 { margin-top: var(--space-2); font-size: var(--text-xl); }
-.pricing-comparison__head p { color: var(--ink-500); font-size: var(--text-sm); margin-top: var(--space-2); }
+.pricing-comparison__head p { color: var(--ink-500); font-size: var(--text-sm); margin-top: var(--space-2); max-width: 65ch; }
 .pricing-table-wrap { border: 1px solid var(--line); border-radius: var(--radius-lg); overflow: hidden; background: var(--white); }
 .pricing-table { width: 100%; table-layout: fixed; border-collapse: collapse; font-size: var(--text-xs); }
 .pricing-table th, .pricing-table td { padding: var(--space-4) var(--space-1); text-align: center; border-bottom: 1px solid var(--line); overflow-wrap: anywhere; }
@@ -43,8 +43,9 @@
 .pricing-table .pricing-table__recommended { background: var(--pomegranate-50); }
 .pricing-table thead .pricing-table__recommended { color: var(--pomegranate-600); }
 .pricing-table__dash { color: var(--ink-300); }
-.pricing-ui-note { font-size: var(--text-xs); color: var(--ink-500); }
+.pricing-ui-note { font-size: var(--text-xs); color: var(--ink-500); max-width: var(--prose-max); }
 .pricing-footer-note { display: flex; justify-content: center; align-items: flex-start; gap: var(--space-2); text-align: center; color: var(--ink-500); font-size: var(--text-sm); padding: var(--space-4) 0; }
 .pricing-footer-note svg { flex: none; color: var(--oasis-500); margin-top: 3px; }
 @media (min-width: 640px) { .pricing-plans { grid-template-columns: repeat(2, minmax(0, 1fr)); } .pricing-table { font-size: var(--text-sm); } .pricing-table th, .pricing-table td { padding: var(--space-5) var(--space-3); } .pricing-table th:first-child { padding-left: var(--space-6); } }
 @media (min-width: 1000px) { .pricing { gap: var(--space-10); } .pricing-heading { padding-block: var(--space-5); } .pricing-plans { grid-template-columns: repeat(4, minmax(0, 1fr)); } .pricing-plan.card { padding: var(--space-5); } .pricing-plan__ribbon { margin: calc(-1 * var(--space-5)) calc(-1 * var(--space-5)) var(--space-5); } .pricing-plan h2 { font-size: var(--text-md); } .pricing-plan__price strong { font-size: 36px; } .pricing-credit-note { padding: var(--space-6); } }
+@media (min-width: 1440px) { .pricing-plans { gap: var(--space-6); } .pricing-plan.card { padding: var(--space-6); } .pricing-plan__ribbon { margin: calc(-1 * var(--space-6)) calc(-1 * var(--space-6)) var(--space-5); } .pricing-plan h2 { font-size: var(--text-lg); } .pricing-plan__price strong { font-size: 40px; } .pricing-credit-note { padding: var(--space-6) var(--space-8); } }

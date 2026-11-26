@@ -26,9 +26,9 @@ body {
   color: var(--color-text);
   background-color: var(--color-bg);
   background-image:
-    radial-gradient(1100px 520px at 12% -8%, rgba(191, 58, 47, 0.07), transparent 62%),
-    radial-gradient(900px 480px at 96% 2%, rgba(108, 75, 144, 0.06), transparent 58%),
-    radial-gradient(760px 420px at 50% 110%, rgba(123, 88, 54, 0.05), transparent 62%);
+    radial-gradient(max(1100px, 60vw) 520px at 12% -8%, rgba(191, 58, 47, 0.07), transparent 62%),
+    radial-gradient(max(900px, 50vw) 480px at 96% 2%, rgba(108, 75, 144, 0.06), transparent 58%),
+    radial-gradient(max(760px, 45vw) 420px at 50% 110%, rgba(123, 88, 54, 0.05), transparent 62%);
   background-attachment: fixed;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -114,25 +114,12 @@ button {
   width: 100%;
   max-width: var(--container-max);
   margin-inline: auto;
-  padding-inline: calc(var(--space-4) + var(--safe-left))
-    calc(var(--space-4) + var(--safe-right));
-}
-
-@media (min-width: 640px) {
-  .container {
-    padding-inline: calc(var(--space-6) + var(--safe-left))
-      calc(var(--space-6) + var(--safe-right));
-  }
-}
-
-@media (min-width: 900px) {
-  .container {
-    padding-inline: calc(var(--space-8) + var(--safe-left))
-      calc(var(--space-8) + var(--safe-right));
-  }
+  padding-inline: calc(var(--container-padding) + var(--safe-left))
+    calc(var(--container-padding) + var(--safe-right));
 }
 
 .page {
+  width: 100%;
   padding-block: var(--space-6) var(--space-10);
   display: flex;
   flex-direction: column;
@@ -162,7 +149,6 @@ button {
   display: flex;
   flex-direction: column;
   gap: var(--space-2);
-  max-width: var(--container-narrow);
 }
 
 .page-title {
@@ -174,7 +160,7 @@ button {
 .page-desc {
   color: var(--color-text-muted);
   font-size: var(--text-base);
-  max-width: 56ch;
+  max-width: min(65ch, 100%);
 }
 
 .eyebrow {
@@ -224,6 +210,13 @@ button {
   }
 
   .grid--2 {
+    gap: var(--space-6);
+  }
+}
+
+@media (min-width: 1440px) {
+  .grid--4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: var(--space-6);
   }
 }

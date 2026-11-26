@@ -1,6 +1,7 @@
 .app-shell {
   display: flex;
   flex-direction: column;
+  width: 100%;
   min-height: 100dvh;
 }
 
@@ -10,6 +11,7 @@
   position: sticky;
   top: 0;
   z-index: var(--z-topbar);
+  width: 100%;
   padding-top: var(--safe-top);
   background: rgba(252, 248, 241, 0.84);
   border-bottom: 1px solid rgba(232, 220, 201, 0.85);
@@ -170,6 +172,8 @@
 @media (min-width: 900px) {
   .topnav {
     display: flex;
+    margin-inline: auto;
+    gap: var(--space-2);
   }
 
   .topbar__cta {
@@ -177,7 +181,7 @@
   }
 
   .topbar__actions {
-    margin-left: var(--space-2);
+    margin-left: 0;
   }
 
   .topbar__inner {
@@ -191,10 +195,21 @@
   }
 }
 
+@media (min-width: 1440px) {
+  .topnav {
+    gap: var(--space-3);
+  }
+
+  .topbar__inner {
+    gap: var(--space-6);
+  }
+}
+
 /* ===== 主内容区 ===== */
 
 .app-main {
   flex: 1 0 auto;
+  width: 100%;
 }
 
 /* 移动端为固定底栏预留空间，避免内容被遮挡 */
@@ -208,6 +223,7 @@
 
 .site-footer {
   display: none;
+  width: 100%;
   border-top: 1px solid var(--color-border);
   background: rgba(255, 255, 255, 0.5);
 }
