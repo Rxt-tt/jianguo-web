@@ -1,0 +1,139 @@
+/**
+ * 设计令牌 —— 新疆风土色系
+ *
+ * 只定义变量，不引用组件；阶段二可直接整体替换数值，请保持变量名不变。
+ * 断点约定（全局统一）：640px 手机横向 / 900px 平板与桌面导航切换 / 1200px 宽屏。
+ */
+
+:root {
+  color-scheme: light;
+
+  /* ===== 色板：沙土暖白 ===== */
+  --sand-50: #fcf8f1;
+  --sand-100: #f6eddf;
+  --sand-200: #edddc4;
+  --sand-300: #dec7a4;
+
+  /* ===== 色板：石榴红（主色） ===== */
+  --pomegranate-50: #fbebe8;
+  --pomegranate-100: #f5d2cd;
+  --pomegranate-500: #bf3a2f;
+  --pomegranate-600: #a22c23;
+  --pomegranate-700: #7d201a;
+
+  /* ===== 色板：葡萄紫（强调色） ===== */
+  --grape-50: #f3edf9;
+  --grape-100: #e4d8f0;
+  --grape-500: #6c4b90;
+  --grape-600: #553872;
+
+  /* ===== 色板：绿洲绿（成功 / 自然） ===== */
+  --oasis-50: #e9f3ec;
+  --oasis-500: #2f7a57;
+  --oasis-600: #256347;
+
+  /* ===== 色板：坚果棕（辅助） ===== */
+  --walnut-50: #f7f0e7;
+  --walnut-300: #c4a889;
+  --walnut-500: #7b5836;
+  --walnut-600: #63452a;
+
+  /* ===== 色板：墨色文字 ===== */
+  --ink-900: #261e16;
+  --ink-700: #4a3f34;
+  --ink-500: #736659;
+  --ink-300: #a29485;
+
+  /* ===== 线条 ===== */
+  --line: #e8dcc9;
+  --line-strong: #d8c7ae;
+  --white: #ffffff;
+
+  /* ===== 语义色 ===== */
+  --color-bg: var(--sand-50);
+  --color-surface: var(--white);
+  --color-surface-muted: var(--sand-100);
+  --color-text: var(--ink-900);
+  --color-text-muted: var(--ink-500);
+  --color-text-faint: var(--ink-300);
+  --color-border: var(--line);
+  --color-border-strong: var(--line-strong);
+  --color-primary: var(--pomegranate-500);
+  --color-primary-hover: var(--pomegranate-600);
+  --color-primary-soft: var(--pomegranate-50);
+  --color-accent: var(--grape-500);
+  --color-accent-soft: var(--grape-50);
+  --color-success: var(--oasis-500);
+  --color-success-soft: var(--oasis-50);
+  --color-warning: var(--walnut-500);
+  --color-on-primary: var(--white);
+  --color-focus: rgba(191, 58, 47, 0.32);
+
+  /* ===== 字体 ===== */
+  --font-sans:
+    "PingFang SC", "HarmonyOS Sans SC", "MiSans", "Noto Sans SC",
+    "Microsoft YaHei", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-mono: "SFMono-Regular", "JetBrains Mono", Consolas, monospace;
+
+  --text-xs: 0.75rem;    /* 12px 角标 */
+  --text-sm: 0.8125rem;  /* 13px 辅助文字 */
+  --text-base: 0.9375rem;/* 15px 正文（移动端更易读） */
+  --text-md: 1.0625rem;  /* 17px 小标题 */
+  --text-lg: 1.25rem;    /* 20px 卡片标题 */
+  --text-xl: 1.5rem;     /* 24px 区块标题 */
+  --text-2xl: clamp(1.75rem, 5vw, 2.25rem);
+  --text-hero: clamp(1.875rem, 6.4vw, 2.875rem);
+
+  --leading-tight: 1.2;
+  --leading-snug: 1.4;
+  --leading-normal: 1.65;
+
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+
+  /* ===== 间距（4px 基准） ===== */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+
+  /* ===== 圆角 ===== */
+  --radius-xs: 6px;
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-pill: 999px;
+
+  /* ===== 阴影（暖棕调） ===== */
+  --shadow-xs: 0 1px 2px rgba(70, 48, 24, 0.06);
+  --shadow-sm: 0 2px 8px rgba(70, 48, 24, 0.07);
+  --shadow-md: 0 10px 26px rgba(70, 48, 24, 0.09);
+  --shadow-lg: 0 20px 50px rgba(70, 48, 24, 0.13);
+  --shadow-primary: 0 8px 22px rgba(191, 58, 47, 0.22);
+
+  /* ===== 布局 ===== */
+  --container-max: 1120px;
+  --container-narrow: 760px;
+  --topbar-height: 56px;
+  --bottomnav-height: 60px;
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left: env(safe-area-inset-left, 0px);
+  --safe-right: env(safe-area-inset-right, 0px);
+  --z-topbar: 40;
+  --z-bottomnav: 50;
+
+  /* ===== 动效 ===== */
+  --ease-out: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --transition-fast: 140ms var(--ease-out);
+  --transition-base: 220ms var(--ease-out);
+}

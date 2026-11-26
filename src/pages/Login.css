@@ -1,0 +1,245 @@
+/**
+ * 登录页 /login
+ * 移动优先：375px 单列（品牌 → 表单），900px 起左右两栏。
+ * 只使用 tokens.css 的变量与 global.css 的 .page / .eyebrow 等工具类。
+ */
+
+.login {
+  width: 100%;
+}
+
+.login__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-6);
+  align-items: start;
+}
+
+/* ===== 左栏：品牌与欢迎语 ===== */
+
+.login__intro {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  min-width: 0;
+}
+
+.login__brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-width: 0;
+}
+
+.login__mark {
+  flex: none;
+  color: var(--color-primary);
+}
+
+.login__brand-name {
+  font-size: var(--text-lg);
+  font-weight: var(--weight-bold);
+  letter-spacing: 0.02em;
+  line-height: var(--leading-tight);
+  color: var(--color-text);
+}
+
+.login__brand-tag {
+  font-size: var(--text-xs);
+  letter-spacing: 0.08em;
+  color: var(--color-text-faint);
+}
+
+.login__title {
+  font-size: var(--text-2xl);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-tight);
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+}
+
+.login__lead {
+  max-width: 46ch;
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  color: var(--color-text-muted);
+}
+
+.login__perks {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-top: var(--space-1);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.login__perks li {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+  min-width: 0;
+}
+
+.login__perks li::before {
+  content: '';
+  flex: none;
+  width: 6px;
+  height: 6px;
+  margin-top: 8px;
+  border-radius: 50%;
+  background: var(--color-success);
+  opacity: 0.85;
+}
+
+/* ===== 右栏：表单卡片 ===== */
+
+.login__panel {
+  width: 100%;
+  min-width: 0;
+}
+
+.login__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.login__form > .btn {
+  margin-top: var(--space-1);
+}
+
+/* 「功能待接入」等阶段说明文字 */
+.login__pending {
+  text-align: center;
+  color: var(--color-text-faint);
+  letter-spacing: 0.01em;
+}
+
+.login__pending::before {
+  content: '· ';
+}
+
+.login__pending::after {
+  content: ' ·';
+}
+
+/* ===== 微信登录 ===== */
+
+.login__alt {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-top: var(--space-5);
+}
+
+.login__alt > .btn {
+  color: var(--oasis-600);
+  border-color: rgba(47, 122, 87, 0.4);
+}
+
+.login__divider {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: var(--text-xs);
+  color: var(--color-text-faint);
+}
+
+.login__divider::before,
+.login__divider::after {
+  content: '';
+  flex: 1 1 auto;
+  height: 1px;
+  background: var(--color-border);
+}
+
+/* ===== 协议勾选（仅视觉） ===== */
+
+.login__agree {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+  margin-top: var(--space-5);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-border);
+  font-size: var(--text-sm);
+  line-height: var(--leading-normal);
+  color: var(--color-text-muted);
+  cursor: pointer;
+}
+
+.login__agree-box {
+  flex: none;
+  width: 16px;
+  height: 16px;
+  margin: 3px 0 0;
+  accent-color: var(--color-primary);
+  cursor: pointer;
+}
+
+.login__agree-text {
+  min-width: 0;
+}
+
+.login__link {
+  color: var(--color-primary);
+  font-weight: var(--weight-medium);
+  text-decoration: underline;
+  text-decoration-color: rgba(191, 58, 47, 0.32);
+  text-underline-offset: 2px;
+}
+
+.login__link:hover {
+  text-decoration-color: currentColor;
+}
+
+/* ===== 合规提示：AI 生成内容标识 ===== */
+
+.login__compliance {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+  margin-top: var(--space-4);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(47, 122, 87, 0.18);
+  background: var(--color-success-soft);
+  font-size: var(--text-xs);
+  line-height: var(--leading-normal);
+  color: var(--ink-700);
+}
+
+.login__compliance svg {
+  flex: none;
+  margin-top: 2px;
+  color: var(--color-success);
+}
+
+.login__compliance strong {
+  color: var(--ink-900);
+  font-weight: var(--weight-semibold);
+}
+
+.login__foot {
+  text-align: center;
+}
+
+.login__foot .login__link {
+  margin-left: var(--space-1);
+}
+
+/* ===== 断点：平板与桌面左右分栏 ===== */
+
+@media (min-width: 900px) {
+  .login__grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 420px);
+    gap: var(--space-12);
+    align-items: center;
+  }
+
+  .login__intro {
+    gap: var(--space-5);
+    padding-bottom: var(--space-6);
+  }
+}

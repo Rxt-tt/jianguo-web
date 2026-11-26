@@ -1,0 +1,55 @@
+.card {
+  position: relative;
+  border-radius: var(--radius-lg);
+  border: 1px solid transparent;
+  background: var(--color-surface);
+  transition:
+    transform var(--transition-base),
+    box-shadow var(--transition-base),
+    border-color var(--transition-base);
+}
+
+.card--elevated {
+  box-shadow: var(--shadow-sm);
+}
+
+.card--outlined {
+  border-color: var(--color-border);
+}
+
+.card--soft {
+  background: linear-gradient(180deg, var(--sand-100) 0%, var(--sand-50) 100%);
+  border-color: var(--sand-200);
+}
+
+.card--pad-none {
+  padding: 0;
+}
+
+.card--pad-sm {
+  padding: var(--space-3);
+}
+
+.card--pad-md {
+  padding: var(--space-4);
+}
+
+.card--pad-lg {
+  padding: var(--space-5);
+}
+
+@media (min-width: 640px) {
+  .card--pad-md {
+    padding: var(--space-5);
+  }
+
+  .card--pad-lg {
+    padding: var(--space-8);
+  }
+}
+
+.card--interactive:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--sand-300);
+}

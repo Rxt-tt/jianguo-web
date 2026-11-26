@@ -1,0 +1,336 @@
+.upload-page {
+  gap: var(--space-6);
+}
+
+/* ===== 主操作区：左侧上传方块 + 右侧示例图 ===== */
+
+.upload-workspace {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-5);
+  align-items: stretch;
+}
+
+.upload-drop-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.upload-drop {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+  min-height: 290px;
+  padding: var(--space-6) var(--space-4);
+  border: 1.5px dashed var(--sand-300);
+  border-radius: var(--radius-lg);
+  background:
+    radial-gradient(460px 240px at 50% 0%, rgba(246, 237, 223, 0.92), transparent 72%),
+    radial-gradient(300px 180px at 88% 100%, rgba(191, 58, 47, 0.06), transparent 70%),
+    rgba(255, 255, 255, 0.72);
+  text-align: center;
+}
+
+.upload-drop__badge-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.upload-drop__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background: linear-gradient(180deg, var(--white) 0%, var(--sand-50) 100%);
+  border: 1px solid var(--sand-200);
+  color: var(--color-primary);
+  box-shadow: var(--shadow-sm);
+}
+
+.upload-drop__copy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.upload-drop__title {
+  font-size: var(--text-md);
+  font-weight: var(--weight-bold);
+  color: var(--color-text);
+  line-height: var(--leading-snug);
+  text-wrap: balance;
+}
+
+.upload-drop__desc {
+  max-width: 38ch;
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.upload-drop__buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-2);
+  width: 100%;
+  margin-top: var(--space-1);
+}
+
+.upload-drop__hint {
+  max-width: 40ch;
+  font-size: var(--text-xs);
+  color: var(--color-text-faint);
+}
+
+/* ===== 一袋核桃示例卡片 ===== */
+
+.upload-sample-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.upload-sample-card__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+.upload-sample-card__meta {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+}
+
+.walnut-sample {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--sand-200);
+  aspect-ratio: 4 / 3;
+  background:
+    radial-gradient(240px 180px at 22% 16%, rgba(255, 255, 255, 0.92), transparent 72%),
+    linear-gradient(180deg, var(--sand-50) 0%, var(--sand-100) 64%, var(--sand-200) 64.5%, #e5d1b2 100%);
+}
+
+.walnut-sample__light {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(128deg, rgba(255, 253, 248, 0.58) 0%, transparent 52%);
+  pointer-events: none;
+}
+
+.walnut-sample__frame-corner {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-color: rgba(123, 88, 54, 0.34);
+  border-style: solid;
+  pointer-events: none;
+}
+
+.walnut-sample__frame-corner--tl {
+  top: 12px;
+  left: 12px;
+  border-width: 2px 0 0 2px;
+  border-top-left-radius: 4px;
+}
+
+.walnut-sample__frame-corner--tr {
+  top: 12px;
+  right: 12px;
+  border-width: 2px 2px 0 0;
+  border-top-right-radius: 4px;
+}
+
+.walnut-sample__frame-corner--bl {
+  bottom: 12px;
+  left: 12px;
+  border-width: 0 0 2px 2px;
+  border-bottom-left-radius: 4px;
+}
+
+.walnut-sample__frame-corner--br {
+  bottom: 12px;
+  right: 12px;
+  border-width: 0 2px 2px 0;
+  border-bottom-right-radius: 4px;
+}
+
+.walnut-sample__svg {
+  position: relative;
+  z-index: 1;
+  width: 78%;
+  max-width: 224px;
+  height: auto;
+}
+
+.walnut-sample__tag {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  z-index: 2;
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+  background: rgba(38, 30, 22, 0.72);
+  color: var(--white);
+  font-size: 11px;
+  font-weight: var(--weight-medium);
+  letter-spacing: 0.03em;
+}
+
+.upload-sample-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.upload-sample-card__title {
+  font-size: var(--text-base);
+  font-weight: var(--weight-semibold);
+  color: var(--color-text);
+}
+
+.upload-sample-card__desc {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: var(--leading-snug);
+}
+
+/* ===== 拍摄技巧 4 项 ===== */
+
+.upload-tips-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.upload-tips-section__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+.upload-tips-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-3);
+}
+
+.upload-tip-card {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-xs);
+}
+
+.upload-tip-card__icon {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-sm);
+}
+
+.upload-tip-card__icon--sun {
+  background: var(--color-primary-soft);
+  color: var(--color-primary);
+}
+
+.upload-tip-card__icon--clean {
+  background: var(--color-success-soft);
+  color: var(--color-success);
+}
+
+.upload-tip-card__icon--text {
+  background: var(--color-accent-soft);
+  color: var(--color-accent);
+}
+
+.upload-tip-card__icon--glare {
+  background: var(--walnut-50);
+  color: var(--walnut-500);
+}
+
+.upload-tip-card__content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.upload-tip-card__title {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  color: var(--color-text);
+}
+
+.upload-tip-card__desc {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  line-height: var(--leading-normal);
+}
+
+/* ===== 底部操作区 ===== */
+
+.upload-footer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding-top: var(--space-2);
+}
+
+.upload-footer__actions {
+  align-items: center;
+}
+
+@media (min-width: 640px) {
+  .upload-drop {
+    padding: var(--space-10) var(--space-6);
+    min-height: 340px;
+  }
+
+  .upload-tips-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .upload-footer__actions {
+    justify-content: space-between;
+  }
+}
+
+@media (min-width: 900px) {
+  .upload-workspace {
+    grid-template-columns: minmax(0, 1.38fr) minmax(0, 0.92fr);
+    gap: var(--space-6);
+  }
+
+  .upload-tips-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--space-4);
+  }
+
+  .upload-tip-card {
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+}
