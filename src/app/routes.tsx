@@ -6,6 +6,10 @@ import { ResultPage } from '../pages/ResultPage';
 import { PricingPage } from '../pages/PricingPage';
 import { LoginPage } from '../pages/LoginPage';
 import { WorksPage } from '../pages/WorksPage';
+import { ScriptPage } from '../pages/video/ScriptPage';
+import { StoryboardPage } from '../pages/video/StoryboardPage';
+import { ProgressPage } from '../pages/video/ProgressPage';
+import { VideoResultPage } from '../pages/video/VideoResultPage';
 
 export interface AppRoute {
   path: string;
@@ -21,4 +25,8 @@ export const appRoutes: AppRoute[] = [
   { path: '/pricing', element: <PricingPage /> },
   { path: '/login', element: <LoginPage /> },
   { path: '/works', element: <WorksPage /> },
+  { path: '/video/script', element: <ScriptPage /> },
+  { path: '/video/storyboard', element: <StoryboardPage /> },
+  { path: '/video/progress', element: <ProgressPage /> },
+  { path: '/video/result', element: <VideoResultPage /> },
 ];

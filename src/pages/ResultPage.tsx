@@ -335,6 +335,17 @@ export function ResultPage() {
                   <Button size="sm" variant="secondary" disabled icon={<ShareSvg />}>
                     分享（待接入）
                   </Button>
+                  {asset.id === 'video' && (
+                    <Button
+                      size="sm"
+                      block
+                      icon={<SparklesIcon size={15} />}
+                      style={{ gridColumn: '1 / -1' }}
+                      onClick={() => navigate('/video/script')}
+                    >
+                      进入视频制作
+                    </Button>
+                  )}
                 </div>
               </div>
             </Card>

@@ -25,6 +25,10 @@ const cases: RouteCase[] = [
   { path: '/pricing', heading: /花在好产品上/, body: /积分简单算/ },
   { path: '/login', heading: /欢迎回来/, body: /AI 生成内容标识说明/ },
   { path: '/works', heading: /我的作品/, body: /还没有作品，去生成第一套/ },
+  { path: '/video/script', heading: /确认视频剧本/, body: /脚本已通过违禁词检查/ },
+  { path: '/video/storyboard', heading: /关键帧分镜预览/, body: /消耗 28 积分 · 约 90 秒/ },
+  { path: '/video/progress', heading: /视频正在生成中/, body: /进行中 62%/ },
+  { path: '/video/result', heading: /宣传视频成品/, body: /AI 标识与违禁词合规说明/ },
 ];
 
 function renderAt(path: string) {
@@ -42,8 +46,8 @@ function renderAt(path: string) {
 }
 
 describe('应用路由', () => {
-  it('路由表共注册 7 条路由', () => {
-    expect(appRoutes).toHaveLength(7);
+  it('路由表共注册 11 条路由', () => {
+    expect(appRoutes).toHaveLength(11);
     expect(appRoutes.map((route) => route.path)).toEqual([
       '/',
       '/upload',
@@ -52,6 +56,10 @@ describe('应用路由', () => {
       '/pricing',
       '/login',
       '/works',
+      '/video/script',
+      '/video/storyboard',
+      '/video/progress',
+      '/video/result',
     ]);
   });
 
